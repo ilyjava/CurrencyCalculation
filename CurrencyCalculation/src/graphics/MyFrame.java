@@ -2,6 +2,10 @@ package graphics;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.time.format.DateTimeFormatter;
+import java.util.Locale;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import javax.swing.*;
 
@@ -21,6 +25,8 @@ public class MyFrame extends JFrame{
 	private JButton button;
 	
 	private Results results = new Results();
+	
+	final JPanel panel = new JPanel();
 	
 	public MyFrame(){
 		super("Расчет прибыли (убытка) по валютному активу");
@@ -52,11 +58,17 @@ public class MyFrame extends JFrame{
 		button.setFocusPainted(false);
 		button.addActionListener(new ActionListener() { 
 			  public void actionPerformed(ActionEvent e) { 
-				  		results.setDate(dateTextField.getText());
-				  		results.setAmount(amountTextField.getText());
-				  		String[] pastData = Main.getPastData(results.getDate());
-				  		String[] currentData = Main.getCurrentData();
-				  		resultTextField.setText(Main.calculationOfProfit(results.getAmount(), pastData[2], currentData[2]));
+				  	String date = dateTextField.getText();
+				  		 if (true == Main.isValidFormat("yyyy-MM-dd", date, Locale.ENGLISH)) {
+				  			results.setDate(dateTextField.getText());
+					  		results.setAmount(amountTextField.getText());
+					  		String[] pastData = Main.getPastData(results.getDate());
+					  		String[] currentData = Main.getCurrentData();
+					  		resultTextField.setText(Main.calculationOfProfit(results.getAmount(), pastData[2], currentData[2]));
+				  		 } else {
+				  			JOptionPane.showMessageDialog(panel, "Пожалуйста, введите дату в формате YYYY-MM-DD", "Неверный формат даты", JOptionPane.ERROR_MESSAGE);
+
+				  		 }
 				  } 
 				} );
 		add(dateLabel);
