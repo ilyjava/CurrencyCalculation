@@ -29,31 +29,31 @@ public class MyFrame extends JFrame{
 	final JPanel panel = new JPanel();
 	
 	public MyFrame(){
-		super("Расчет прибыли (убытка) по валютному активу");
+		super("Р Р°СЃС‡РµС‚ РїСЂРёР±С‹Р»Рё (СѓР±С‹С‚РєР°) РїРѕ РІР°Р»СЋС‚РЅРѕРјСѓ Р°РєС‚РёРІСѓ");
 		int w=350, h=350;
 		setBounds(700,200,w,h);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setResizable(false);
 		setLayout(null);
 		
-		dateLabel = new JLabel("Дата покупки валюты (в формате YYYY-MM-DD)");
+		dateLabel = new JLabel("Р”Р°С‚Р° РїРѕРєСѓРїРєРё РІР°Р»СЋС‚С‹ (РІ С„РѕСЂРјР°С‚Рµ YYYY-MM-DD)");
 		dateLabel.setBounds(10,10,w-25,30);
 		dateTextField = new JTextField();
 		dateTextField.setBounds(10,40,200,30);
 		
-		amountLabel = new JLabel("Количество покупаемой валюты");
+		amountLabel = new JLabel("РљРѕР»РёС‡РµСЃС‚РІРѕ РїРѕРєСѓРїР°РµРјРѕР№ РІР°Р»СЋС‚С‹");
 		amountLabel.setBounds(10,90,w-25,30);
 		amountTextField = new JTextField();
 		amountTextField.setBounds(10,120, 200, 30);
 		
-		resultLabel = new JLabel("Ваша прибыль/убыток в рублях");
+		resultLabel = new JLabel("Р’Р°С€Р° РїСЂРёР±С‹Р»СЊ/СѓР±С‹С‚РѕРє РІ СЂСѓР±Р»СЏС…");
 		resultLabel.setBounds(10,170,w-25,30);
 		resultTextField = new JTextField();
 		resultTextField.setBounds(dateTextField.getX(),200,200,30);
 		resultTextField.setEditable(false);
 			
 
-		button = new JButton("Рассчитать"); 
+		button = new JButton("Р Р°СЃСЃС‡РёС‚Р°С‚СЊ"); 
 		button.setBounds(resultTextField.getX(),250,200,30);
 		button.setFocusPainted(false);
 		button.addActionListener(new ActionListener() { 
@@ -62,9 +62,9 @@ public class MyFrame extends JFrame{
 				  	String amount = amountTextField.getText();
 				  		 if (Main.isValidFormat("yyyy-MM-dd", date, Locale.ENGLISH) == false || Main.isInteger(amount) == false) {
 				  			 if (Main.isValidFormat("yyyy-MM-dd", date, Locale.ENGLISH) == false) {
-				  				JOptionPane.showMessageDialog(panel, "Пожалуйста, введите дату в формате YYYY-MM-DD", "Неверный формат даты", JOptionPane.ERROR_MESSAGE);
+				  				JOptionPane.showMessageDialog(panel, "РџРѕР¶Р°Р»СѓР№СЃС‚Р°, РІРІРµРґРёС‚Рµ РґР°С‚Сѓ РІ С„РѕСЂРјР°С‚Рµ YYYY-MM-DD", "РќРµРІРµСЂРЅС‹Р№ С„РѕСЂРјР°С‚ РґР°С‚С‹", JOptionPane.ERROR_MESSAGE);
 				  			 } else if (Main.isInteger(amount) == false) {
-				  				JOptionPane.showMessageDialog(panel, "Пожалуйста, введите количество валюты в виде целого числа", "Неверный формат введенных данных", JOptionPane.ERROR_MESSAGE);
+				  				JOptionPane.showMessageDialog(panel, "РџРѕР¶Р°Р»СѓР№СЃС‚Р°, РІРІРµРґРёС‚Рµ РєРѕР»РёС‡РµСЃС‚РІРѕ РІР°Р»СЋС‚С‹ РІ РІРёРґРµ С†РµР»РѕРіРѕ С‡РёСЃР»Р°", "РќРµРІРµСЂРЅС‹Р№ С„РѕСЂРјР°С‚ РІРІРµРґРµРЅРЅС‹С… РґР°РЅРЅС‹С…", JOptionPane.ERROR_MESSAGE);
 				  			 } 
 				  		 } else {
 					  			results.setDate(dateTextField.getText());

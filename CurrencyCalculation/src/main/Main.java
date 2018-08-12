@@ -80,7 +80,7 @@ public class Main {
 		}
 		double currencyPastRate = Double.parseDouble(pastRate);
 		double currencyCurrentRate = Double.parseDouble(currentRate);
-		int profit = (int) (currencyPastRate-(currencyCurrentRate+(currencyCurrentRate/(100/0.5))))*currencyAmount; //прошлый курс валюты - настоящий курс валюты с учетом spread
+		int profit = (int) (currencyPastRate-(currencyCurrentRate+(currencyCurrentRate/(100/0.5))))*currencyAmount; //РїСЂРѕС€Р»С‹Р№ РєСѓСЂСЃ РІР°Р»СЋС‚С‹ - РЅР°СЃС‚РѕСЏС‰РёР№ РєСѓСЂСЃ РІР°Р»СЋС‚С‹ СЃ СѓС‡РµС‚РѕРј spread
 		String result = Integer.toString(profit);
 		return result;
 	}
