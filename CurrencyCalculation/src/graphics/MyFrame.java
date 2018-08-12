@@ -59,18 +59,23 @@ public class MyFrame extends JFrame{
 		button.addActionListener(new ActionListener() { 
 			  public void actionPerformed(ActionEvent e) { 
 				  	String date = dateTextField.getText();
-				  		 if (true == Main.isValidFormat("yyyy-MM-dd", date, Locale.ENGLISH)) {
-				  			results.setDate(dateTextField.getText());
-					  		results.setAmount(amountTextField.getText());
-					  		String[] pastData = Main.getPastData(results.getDate());
-					  		String[] currentData = Main.getCurrentData();
-					  		resultTextField.setText(Main.calculationOfProfit(results.getAmount(), pastData[2], currentData[2]));
+				  	String amount = amountTextField.getText();
+				  		 if (Main.isValidFormat("yyyy-MM-dd", date, Locale.ENGLISH) == false || Main.isInteger(amount) == false) {
+				  			 if (Main.isValidFormat("yyyy-MM-dd", date, Locale.ENGLISH) == false) {
+				  				JOptionPane.showMessageDialog(panel, "Пожалуйста, введите дату в формате YYYY-MM-DD", "Неверный формат даты", JOptionPane.ERROR_MESSAGE);
+				  			 } else if (Main.isInteger(amount) == false) {
+				  				JOptionPane.showMessageDialog(panel, "Пожалуйста, введите количество валюты в виде целого числа", "Неверный формат введенных данных", JOptionPane.ERROR_MESSAGE);
+				  			 } 
 				  		 } else {
-				  			JOptionPane.showMessageDialog(panel, "Пожалуйста, введите дату в формате YYYY-MM-DD", "Неверный формат даты", JOptionPane.ERROR_MESSAGE);
-
+					  			results.setDate(dateTextField.getText());
+						  		results.setAmount(amountTextField.getText());
+						  		String[] pastData = Main.getPastData(results.getDate());
+						  		String[] currentData = Main.getCurrentData();
+						  		resultTextField.setText(Main.calculationOfProfit(results.getAmount(), pastData[2], currentData[2]));
 				  		 }
-				  } 
-				} );
+			  }
+		});
+				  		 
 		add(dateLabel);
 		add(dateTextField);
 		
@@ -83,5 +88,12 @@ public class MyFrame extends JFrame{
 		add(button);
 		
 		setVisible(true);
+	
+		
 	}
 }
+
+	
+	
+
+

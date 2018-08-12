@@ -74,7 +74,10 @@ public class Main {
    }
 	
 	public static String calculationOfProfit(String amount, String pastRate, String currentRate) {
-		int currencyAmount = Integer.parseInt(amount);
+		int currencyAmount = 0;
+		if (isInteger(amount) == true) {
+			currencyAmount = Integer.parseInt(amount);
+		}
 		double currencyPastRate = Double.parseDouble(pastRate);
 		double currencyCurrentRate = Double.parseDouble(currentRate);
 		int profit = (int) (currencyPastRate-(currencyCurrentRate+(currencyCurrentRate/(100/0.5))))*currencyAmount; //прошлый курс валюты - настоящий курс валюты с учетом spread
@@ -110,4 +113,15 @@ public class Main {
 	    return false;
 	}
 	
+	public static boolean isInteger(String amount) {
+		try {
+			int currencyAmount = Integer.parseInt(amount);
+			if (currencyAmount < 0) {
+				return false;
+			}
+		} catch(Exception e) {
+			return false;
+		}
+		return true;
+	}
 }
